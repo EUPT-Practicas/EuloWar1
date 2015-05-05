@@ -65,9 +65,9 @@ public class ServiceRegistroAutenticacion {
      * @return 
      */
     @WebMethod(operationName = "comprobarLogin")
-    public boolean comprobarLogin(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
+    public boolean comprobarLogin(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
-        Usuario u1 = usuarioFacade.findByEmail(email);
+        Usuario u1 = usuarioFacade.findByNombreUsuario(nombreUsuario);
         String passwordU1 = u1.getPassword();
         
         return passwordU1.equals(password);

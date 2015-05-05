@@ -36,11 +36,11 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return u;
     }
     
-//    public boolean comprobarLogin(String email, String password){
-//        Usuario u1 = findByEmail(email);
-//        String passwordU1 = u1.getPassword();
-//        
-//        return passwordU1.equals(password);
-//    }
+    public Usuario findByNombreUsuario(String nombreUsuario){
+        Query q = em.createNamedQuery("Usuario.findByNombreUsuario");
+        q.setParameter("nombreUsuario", nombreUsuario);
+        Usuario u = (Usuario) q.getSingleResult();
+        return u;
+    }
     
 }
