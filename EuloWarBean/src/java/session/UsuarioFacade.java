@@ -40,7 +40,6 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public Usuario findByNombreUsuario(String nombreUsuario) {
         Query q = em.createNamedQuery("Usuario.findByNombreUsuario");
         q.setParameter("nombreUsuario", nombreUsuario);
-        System.out.println("consulta: " + q.toString());
         try {
             Usuario u = (Usuario) q.getSingleResult();
             return u;

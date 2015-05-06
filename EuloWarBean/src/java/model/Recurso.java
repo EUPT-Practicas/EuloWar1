@@ -66,8 +66,7 @@ public class Recurso implements Serializable {
         this.idRecurso = idRecurso;
     }
 
-    public Recurso(Integer idRecurso, String tipoRecurso, int unidades) {
-        this.idRecurso = idRecurso;
+    public Recurso(String tipoRecurso, int unidades) {
         this.tipoRecurso = tipoRecurso;
         this.unidades = unidades;
     }

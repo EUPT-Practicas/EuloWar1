@@ -4,6 +4,9 @@
     <service name="ServiceRegistroAutenticacion">
       <implementation-class>webservices.ServiceRegistroAutenticacion</implementation-class>
     </service>
+    <service name="AsignarRecursosInicio">
+      <implementation-class>webservices.AsignarRecursosInicio</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

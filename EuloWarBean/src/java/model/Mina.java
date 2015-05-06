@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,11 +31,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mina.findAll", query = "SELECT m FROM Mina m"),
     @NamedQuery(name = "Mina.findByIdMina", query = "SELECT m FROM Mina m WHERE m.idMina = :idMina"),
     @NamedQuery(name = "Mina.findByTipoMina", query = "SELECT m FROM Mina m WHERE m.tipoMina = :tipoMina"),
-    @NamedQuery(name = "Mina.findByNivelMina", query = "SELECT m FROM Mina m WHERE m.nivelMina = :nivelMina")})
+    @NamedQuery(name = "Mina.findByNivelMina", query = "SELECT m FROM Mina m WHERE m.nivelMina = :nivelMina"),
+    @NamedQuery(name = "Mina.findByDeposito", query = "SELECT m FROM Mina m WHERE m.deposito = :deposito")})
 public class Mina implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @GeneratedValue
     @NotNull
     @Column(name = "idMina")
     private Integer idMina;
@@ -47,11 +50,15 @@ public class Mina implements Serializable {
     @NotNull
     @Column(name = "nivelMina")
     private int nivelMina;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "deposito")
+    private int deposito;
     @JoinColumn(name = "FK_MinaUsuario", referencedColumnName = "email")
     @ManyToOne(optional = false)
     private Usuario fKMinaUsuario;
     @JoinColumn(name = "FK_MinaRecurso", referencedColumnName = "idRecurso")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Recurso fKMinaRecurso;
 
     public Mina() {
@@ -61,8 +68,7 @@ public class Mina implements Serializable {
         this.idMina = idMina;
     }
 
-    public Mina(Integer idMina, String tipoMina, int nivelMina) {
-        this.idMina = idMina;
+    public Mina(String tipoMina, int nivelMina) {
         this.tipoMina = tipoMina;
         this.nivelMina = nivelMina;
     }
@@ -89,6 +95,14 @@ public class Mina implements Serializable {
 
     public void setNivelMina(int nivelMina) {
         this.nivelMina = nivelMina;
+    }
+
+    public int getDeposito() {
+        return deposito;
+    }
+
+    public void setDeposito(int deposito) {
+        this.deposito = deposito;
     }
 
     public Usuario getFKMinaUsuario() {
