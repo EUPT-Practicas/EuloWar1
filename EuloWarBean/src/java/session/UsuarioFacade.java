@@ -7,6 +7,7 @@ package session;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Usuario;
@@ -36,11 +37,17 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return u;
     }
     
-    public Usuario findByNombreUsuario(String nombreUsuario){
+    public Usuario findByNombreUsuario(String nombreUsuario) {
         Query q = em.createNamedQuery("Usuario.findByNombreUsuario");
         q.setParameter("nombreUsuario", nombreUsuario);
-        Usuario u = (Usuario) q.getSingleResult();
-        return u;
+        System.out.println("consulta: " + q.toString());
+        try {
+            Usuario u = (Usuario) q.getSingleResult();
+            return u;
+        } catch (NoResultException e){
+            e.printStackTrace();
+            return null;
+        }
     }
     
 }

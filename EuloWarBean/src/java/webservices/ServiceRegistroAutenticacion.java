@@ -12,6 +12,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
 /**
@@ -27,16 +28,17 @@ public class ServiceRegistroAutenticacion {
 
     /**
      * Web service operation
+     *
      * @param email
      * @param nombreUsuario
      * @param password
-     * @return 
+     * @return
      */
     @WebMethod(operationName = "crearUsuario")
     public boolean crearUsuario(@WebParam(name = "email") String email, @WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         Usuario u = new Usuario(email, nombreUsuario, password);
-        if (usuarioFacade.find(email)!=null){
+        if (usuarioFacade.find(email) != null) {
             System.out.println("existe");
             return false;
         }
@@ -48,13 +50,13 @@ public class ServiceRegistroAutenticacion {
     /**
      * Web service operation
      *
-     * @param email
+     * @param nomUsuario
      * @return
      */
     @WebMethod(operationName = "findUser")
-    public Usuario findUser(@WebParam(name = "email") String email) {
+    public Usuario findUser(@WebParam(name = "nomUsuario") String nomUsuario) {
         //TODO write your implementation code here:
-        Usuario u = usuarioFacade.findByEmail(email);
+        Usuario u = usuarioFacade.findByNombreUsuario(nomUsuario);
         return u;
     }
 
@@ -68,9 +70,12 @@ public class ServiceRegistroAutenticacion {
     @WebMethod(operationName = "comprobarLogin")
     public boolean comprobarLogin(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
+//        Usuario u1;
         Usuario u1 = usuarioFacade.findByNombreUsuario(nombreUsuario);
-        String passwordU1 = u1.getPassword();
-
-        return passwordU1.equals(password);
+        if (u1!=null){
+            String passwordU1 = u1.getPassword();
+            return passwordU1.equals(password);
+        }
+        return false;
     }
 }
