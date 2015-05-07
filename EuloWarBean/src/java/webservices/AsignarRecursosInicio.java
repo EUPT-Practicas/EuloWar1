@@ -37,13 +37,13 @@ public class AsignarRecursosInicio {
      * @return 
      */
     @WebMethod(operationName = "asignarMina")
-    public boolean asignarMina(@WebParam(name = "emailUsuario") String emailUsuario) {
+    public Mina asignarMina(@WebParam(name = "emailUsuario") String emailUsuario) {
         //TODO write your implementation code here:
         Usuario u = usuarioFacade.findByEmail(emailUsuario);
         Mina m = new Mina ("HIERRO", 1);
         m.setFKMinaUsuario(u);
         minaFacade.create(m);
-        return true;
+        return m;
     }
 
     /**

@@ -71,6 +71,8 @@ public class ServiceRegistroAutenticacion {
     public boolean comprobarLogin(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
 //        Usuario u1;
+        System.out.println("nombre ws" + nombreUsuario);
+        System.out.println("pass ws= " + password);
         Usuario u1 = usuarioFacade.findByNombreUsuario(nombreUsuario);
         if (u1!=null){
             String passwordU1 = u1.getPassword();

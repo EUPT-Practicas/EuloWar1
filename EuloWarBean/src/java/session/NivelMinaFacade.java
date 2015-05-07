@@ -8,15 +8,14 @@ package session;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import model.Mina;
+import model.NivelMina;
 
 /**
  *
  * @author FranciscoJavier
  */
 @Stateless
-public class MinaFacade extends AbstractFacade<Mina> {
-    
+public class NivelMinaFacade extends AbstractFacade<NivelMina> {
     @PersistenceContext(unitName = "EuloWarBeanPU")
     private EntityManager em;
 
@@ -25,8 +24,8 @@ public class MinaFacade extends AbstractFacade<Mina> {
         return em;
     }
 
-    public MinaFacade() {
-        super(Mina.class);
+    public NivelMinaFacade() {
+        super(NivelMina.class);
     }
     
 }
