@@ -7,8 +7,11 @@
     <service name="AsignarRecursosInicio">
       <implementation-class>webservices.AsignarRecursosInicio</implementation-class>
     </service>
-    <service name="ProducirRecursosMina">
-      <implementation-class>webservices.ProducirRecursosMina</implementation-class>
+    <service name="OperacionesMinas">
+      <implementation-class>webservices.OperacionesMinas</implementation-class>
+    </service>
+    <service name="OperacionesRecursos">
+      <implementation-class>webservices.OperacionesRecursos</implementation-class>
     </service>
   </services>
   <clients/>
