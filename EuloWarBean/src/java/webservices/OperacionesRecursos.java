@@ -76,4 +76,25 @@ public class OperacionesRecursos {
             return "OK";
         }
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "obtenerRecursos")
+    public Integer obtenerRecursos(@WebParam(name = "email") String email) {
+        //TODO write your implementation code here:
+        Usuario u = (Usuario) usuarioFacade.find(email);
+        if(u == null){
+            return -10;
+        }else{
+            Collection<Recurso> recursosCollection = u.getRecursoCollection();
+            Iterator<Recurso> recursoIterator = recursosCollection.iterator();
+            Recurso r = recursoIterator.next();
+            int unidadesExistentes = r.getUnidades();
+            //System.out.println("Recursos Usuario: " + unidadesExistentes);
+            return unidadesExistentes;
+        }
+        //return null;
+    }
+
 }
