@@ -14,6 +14,7 @@ import javax.jws.WebParam;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
+import utilidades.GestorEmail;
 
 /**
  *
@@ -26,6 +27,8 @@ public class ServiceRegistroAutenticacion {
     @EJB
     UsuarioFacade usuarioFacade;
 
+    
+    private static final String ASUNTO_NUEVA_CUENTA = "EuloWar - ¡Bienvenido!";
     /**
      * Web service operation
      *
@@ -44,6 +47,15 @@ public class ServiceRegistroAutenticacion {
         }
         System.out.println("no existe");
         usuarioFacade.create(u);
+        
+        GestorEmail gestorEmail = new GestorEmail();
+        String mensaje = "Bienvenido a EuloWar, " + nombreUsuario + ". \n"
+                + "Tu cuenta ha sido creada con los siguientes datos:\n\n"
+                + "Nombre de usuario: " + nombreUsuario + "\n"
+                + "Correo electrónico: " + email + "\n"
+                + "Password: ************* \n\n"
+                + "Disfruta de la experiencia. Un saludo.";
+        gestorEmail.send(email, ASUNTO_NUEVA_CUENTA, mensaje);
         return true;
     }
 
