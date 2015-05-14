@@ -13,6 +13,9 @@
     <service name="OperacionesRecursos">
       <implementation-class>webservices.OperacionesRecursos</implementation-class>
     </service>
+    <service name="GestionPerfilUsuario">
+      <implementation-class>webservices.GestionPerfilUsuario</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

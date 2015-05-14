@@ -41,11 +41,11 @@ public class OperacionesMinas {
     public boolean producirRecursos(@WebParam(name = "idMina") int idMina) {
         
         Mina m = (Mina) minaFacade.find(idMina);
-        System.out.println("IDMINA: "+idMina);
+//        System.out.println("IDMINA: "+idMina);
         int nivel = m.getNivelMina();
-        System.err.println("NIVEL DE LA MINA: " +nivel);
+//        System.err.println("NIVEL DE LA MINA: " +nivel);
         NivelMina nm = nivelMinaFacade.find(nivel);
-        System.out.println("GANANCIA: " + nm.getGanancia());
+//        System.out.println("GANANCIA: " + nm.getGanancia());
         m.setDeposito(m.getDeposito() + nm.getGanancia());
         minaFacade.edit(m);
         

@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Recurso.findByIdRecurso", query = "SELECT r FROM Recurso r WHERE r.idRecurso = :idRecurso"),
     @NamedQuery(name = "Recurso.findByTipoRecurso", query = "SELECT r FROM Recurso r WHERE r.tipoRecurso = :tipoRecurso"),
     @NamedQuery(name = "Recurso.findByUnidades", query = "SELECT r FROM Recurso r WHERE r.unidades = :unidades")})
+    //@NamedQuery(name = "Recurso.findByEmail", query = "SELECT r FROM Recurso r WHERE r.FK_Usuario = :email")})
 public class Recurso implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
