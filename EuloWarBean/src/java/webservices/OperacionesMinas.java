@@ -5,6 +5,8 @@
  */
 package webservices;
 
+import java.util.Collection;
+import java.util.Iterator;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -84,6 +86,21 @@ public class OperacionesMinas {
         m.setFKMinaUsuario(u);
         minaFacade.create(m);
         return m;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "obtenerMinas")
+    public Collection obtenerMinas(@WebParam(name = "email") String email) {
+        //TODO write your implementation code here:
+        Usuario u = (Usuario) usuarioFacade.findByEmail(email);
+        if(u!=null){
+            //Obtener minas
+            Collection<Mina> collectionMinas = u.getMinaCollection();
+            return collectionMinas;
+        }
+        return null;
     }
     
     
