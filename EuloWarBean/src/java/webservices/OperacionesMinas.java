@@ -14,9 +14,11 @@ import javax.jws.WebParam;
 import javax.ejb.Stateless;
 import model.Mina;
 import model.NivelMina;
+import model.Recurso;
 import model.Usuario;
 import session.MinaFacade;
 import session.NivelMinaFacade;
+import session.RecursoFacade;
 import session.UsuarioFacade;
 
 /**
@@ -33,6 +35,8 @@ public class OperacionesMinas {
     private NivelMinaFacade nivelMinaFacade;
     @EJB
     private UsuarioFacade usuarioFacade;
+    @EJB
+    private RecursoFacade recursoFacade;
     
     private static final int NIVEL_MAXIMO = 5;
     
@@ -40,7 +44,7 @@ public class OperacionesMinas {
      * Web service operation
      */
     @WebMethod(operationName = "producirRecursos")
-    public boolean producirRecursos(@WebParam(name = "idMina") int idMina) {
+    public synchronized boolean producirRecursos(@WebParam(name = "idMina") int idMina) {
         
         Mina m = (Mina) minaFacade.find(idMina);
 //        System.out.println("IDMINA: "+idMina);
@@ -48,7 +52,11 @@ public class OperacionesMinas {
 //        System.err.println("NIVEL DE LA MINA: " +nivel);
         NivelMina nm = nivelMinaFacade.find(nivel);
 //        System.out.println("GANANCIA: " + nm.getGanancia());
-        m.setDeposito(m.getDeposito() + nm.getGanancia());
+        String email = m.getFKMinaUsuario().getEmail();
+        Recurso r = recursoFacade.obtenerRecursosFromEmail(email);
+//        Recurso r = m.getFKMinaRecurso();
+        r.setUnidades(r.getUnidades() + nm.getGanancia());
+//        m.setDeposito(m.getDeposito() + nm.getGanancia());
         minaFacade.edit(m);
         
         return true;

@@ -8,7 +8,7 @@ import model.TropaAtaque;
 import model.TropaDefensa;
 import model.Usuario;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-05-07T17:27:20")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-05-14T19:55:35")
 @StaticMetamodel(Campamento.class)
 public class Campamento_ { 
 
