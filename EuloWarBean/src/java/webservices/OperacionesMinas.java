@@ -110,6 +110,16 @@ public class OperacionesMinas {
         }
         return null;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "obtenerNivelMina")
+    public NivelMina obtenerNivelMina(@WebParam(name = "nivelMina") int nivelMina) {
+        NivelMina nm = nivelMinaFacade.find(nivelMina);
+        //System.out.println("Nivel mina: " + nm.getNivel() + " , " + nm.getGanancia());
+        return nm;
+    }
     
     
 }
