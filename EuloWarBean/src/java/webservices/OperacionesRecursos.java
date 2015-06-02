@@ -5,10 +5,6 @@
  */
 package webservices;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -21,7 +17,7 @@ import session.UsuarioFacade;
 
 /**
  *
- * @author FranciscoJavier
+ * @author Sergio
  */
 @WebService(serviceName = "OperacionesRecursos")
 @Stateless()
@@ -123,5 +119,4 @@ public class OperacionesRecursos {
 //        }
         //return null;
     }
-
 }

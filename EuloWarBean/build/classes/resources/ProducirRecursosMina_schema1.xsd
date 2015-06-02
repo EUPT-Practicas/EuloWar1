@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://webservices/" xmlns:tns="http://webservices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="asignarMina" type="tns:asignarMina"/>
+
+  <xs:element name="asignarMinaResponse" type="tns:asignarMinaResponse"/>
+
+  <xs:element name="mejorarMina" type="tns:mejorarMina"/>
+
+  <xs:element name="mejorarMinaResponse" type="tns:mejorarMinaResponse"/>
+
+  <xs:element name="mina" type="tns:mina"/>
+
+  <xs:element name="nivelMina" type="tns:nivelMina"/>
+
+  <xs:element name="obtenerMinas" type="tns:obtenerMinas"/>
+
+  <xs:element name="obtenerMinasResponse" type="tns:obtenerMinasResponse"/>
+
+  <xs:element name="obtenerNivelMina" type="tns:obtenerNivelMina"/>
+
+  <xs:element name="obtenerNivelMinaResponse" type="tns:obtenerNivelMinaResponse"/>
+
+  <xs:element name="producirRecursos" type="tns:producirRecursos"/>
+
+  <xs:element name="producirRecursosResponse" type="tns:producirRecursosResponse"/>
+
+  <xs:element name="recurso" type="tns:recurso"/>
+
+  <xs:element name="usuario" type="tns:usuario"/>
+
+  <xs:complexType name="asignarMina">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignarMinaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:mina" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mina">
+    <xs:sequence>
+      <xs:element name="deposito" type="xs:int"/>
+      <xs:element name="FKMinaRecurso" type="tns:recurso" minOccurs="0"/>
+      <xs:element name="FKMinaUsuario" type="tns:usuario" minOccurs="0"/>
+      <xs:element name="idMina" type="xs:int" minOccurs="0"/>
+      <xs:element name="nivelMina" type="xs:int"/>
+      <xs:element name="tipoMina" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recurso">
+    <xs:sequence>
+      <xs:element name="FKUsuario" type="tns:usuario" minOccurs="0"/>
+      <xs:element name="idRecurso" type="xs:int" minOccurs="0"/>
+      <xs:element name="tipoRecurso" type="xs:string" minOccurs="0"/>
+      <xs:element name="unidades" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaRegistro" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mejorarMina">
+    <xs:sequence>
+      <xs:element name="idMina" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mejorarMinaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerNivelMina">
+    <xs:sequence>
+      <xs:element name="nivelMina" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerNivelMinaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:nivelMina" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nivelMina">
+    <xs:sequence>
+      <xs:element name="ganancia" type="xs:int" minOccurs="0"/>
+      <xs:element name="nivel" type="xs:int" minOccurs="0"/>
+      <xs:element name="precio" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerMinas">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerMinasResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="producirRecursos">
+    <xs:sequence>
+      <xs:element name="idMina" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="producirRecursosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://webservices/" xmlns:tns="http://webservices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="cambiarPassword" type="tns:cambiarPassword"/>
+
+  <xs:element name="cambiarPasswordResponse" type="tns:cambiarPasswordResponse"/>
+
+  <xs:element name="eliminarCuenta" type="tns:eliminarCuenta"/>
+
+  <xs:element name="eliminarCuentaResponse" type="tns:eliminarCuentaResponse"/>
+
+  <xs:element name="hello" type="tns:hello"/>
+
+  <xs:element name="helloResponse" type="tns:helloResponse"/>
+
+  <xs:element name="restablecerPassword" type="tns:restablecerPassword"/>
+
+  <xs:element name="restablecerPasswordResponse" type="tns:restablecerPasswordResponse"/>
+
+  <xs:complexType name="eliminarCuenta">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarCuentaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cambiarPassword">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="viejaPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="nuevaPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="repiteNuevaPassword" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cambiarPasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="restablecerPassword">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="restablecerPasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

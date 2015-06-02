@@ -5,8 +5,7 @@
  */
 package webservices;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -23,9 +22,9 @@ import session.UsuarioFacade;
 
 /**
  *
- * @author FranciscoJavier
+ * @author Sergio
  */
-@WebService(serviceName = "ProducirRecursosMina")
+@WebService(serviceName = "OperacionesMinas")
 @Stateless()
 public class OperacionesMinas {
 
@@ -37,15 +36,15 @@ public class OperacionesMinas {
     private UsuarioFacade usuarioFacade;
     @EJB
     private RecursoFacade recursoFacade;
-    
+
     private static final int NIVEL_MAXIMO = 5;
-    
+
     /**
      * Web service operation
      */
     @WebMethod(operationName = "producirRecursos")
     public synchronized boolean producirRecursos(@WebParam(name = "idMina") int idMina) {
-        
+
         Mina m = (Mina) minaFacade.find(idMina);
 //        System.out.println("IDMINA: "+idMina);
         int nivel = m.getNivelMina();
@@ -58,14 +57,15 @@ public class OperacionesMinas {
         r.setUnidades(r.getUnidades() + nm.getGanancia());
 //        m.setDeposito(m.getDeposito() + nm.getGanancia());
         minaFacade.edit(m);
-        
+
         return true;
     }
 
     /**
      * Web service operation
+     *
      * @param idMina
-     * @return 
+     * @return
      */
     @WebMethod(operationName = "mejorarMina")
     public boolean mejorarMina(@WebParam(name = "idMina") int idMina) {
@@ -73,7 +73,7 @@ public class OperacionesMinas {
         Mina m = (Mina) minaFacade.find(idMina);
         System.err.println("MINA: " + m.getIdMina());
         int nivel = m.getNivelMina();
-        if (nivel <= NIVEL_MAXIMO){
+        if (nivel <= NIVEL_MAXIMO) {
             m.setNivelMina(nivel + 1);
             minaFacade.edit(m);
             return true;
@@ -81,16 +81,17 @@ public class OperacionesMinas {
             return false;
         }
     }
-    
+
     /**
      * Web service operation
-     * @return 
+     *
+     * @return
      */
     @WebMethod(operationName = "asignarMina")
     public Mina asignarMina(@WebParam(name = "emailUsuario") String emailUsuario) {
         //TODO write your implementation code here:
         Usuario u = usuarioFacade.findByEmail(emailUsuario);
-        Mina m = new Mina ("HIERRO", 1);
+        Mina m = new Mina("HIERRO", 1);
         m.setFKMinaUsuario(u);
         minaFacade.create(m);
         return m;
@@ -100,13 +101,22 @@ public class OperacionesMinas {
      * Web service operation
      */
     @WebMethod(operationName = "obtenerMinas")
-    public Collection obtenerMinas(@WebParam(name = "email") String email) {
+    public List obtenerMinas(@WebParam(name = "email") String email) {
         //TODO write your implementation code here:
         Usuario u = (Usuario) usuarioFacade.findByEmail(email);
-        if(u!=null){
-            //Obtener minas
-            Collection<Mina> collectionMinas = u.getMinaCollection();
-            return collectionMinas;
+        if (u != null) {
+            return minaFacade.obtenerMinasFromEmail(email);
+//            List<Mina> minas = minaFacade.findAll();
+//            List<Mina> listaMinas = new LinkedList<>();
+//            for (Mina m : minas) {
+//                System.out.println("Mina: " + m.getIdMina() + " | Usuario: " + m.getFKMinaUsuario().getEmail());
+//                System.out.println("Lista ret: " + listaMinas.size());
+//                if (m.getFKMinaUsuario().getEmail().equals(u.getEmail())) {
+//                    System.out.println("Añade mina: " + m.getIdMina());
+//                    listaMinas.add(m);
+//                }
+//            }
+//            return listaMinas;
         }
         return null;
     }
@@ -120,6 +130,4 @@ public class OperacionesMinas {
         //System.out.println("Nivel mina: " + nm.getNivel() + " , " + nm.getGanancia());
         return nm;
     }
-    
-    
 }

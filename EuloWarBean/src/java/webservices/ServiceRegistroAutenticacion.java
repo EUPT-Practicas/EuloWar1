@@ -5,40 +5,31 @@
  */
 package webservices;
 
-import model.Usuario;
-import session.UsuarioFacade;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceException;
+import model.Usuario;
+import session.UsuarioFacade;
 import utilidades.GestorEmail;
 
 /**
  *
- * @author FranciscoJavier
+ * @author Sergio
  */
 @WebService(serviceName = "ServiceRegistroAutenticacion")
 @Stateless()
 public class ServiceRegistroAutenticacion {
-
+    
     @EJB
     UsuarioFacade usuarioFacade;
 
     
     private static final String ASUNTO_NUEVA_CUENTA = "EuloWar - ¡Bienvenido!";
-    /**
-     * Web service operation
-     *
-     * @param email
-     * @param nombreUsuario
-     * @param password
-     * @return
-     */
+
     @WebMethod(operationName = "crearUsuario")
-    public boolean crearUsuario(@WebParam(name = "email") String email, @WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
+    public boolean crearUsuario(@WebParam(name = "emailUsuario") String email, @WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "passwordUsuario") String password) {
         //TODO write your implementation code here:
         Usuario u = new Usuario(email, nombreUsuario, password);
         if (usuarioFacade.find(email) != null) {
@@ -66,7 +57,7 @@ public class ServiceRegistroAutenticacion {
      * @return
      */
     @WebMethod(operationName = "findUser")
-    public Usuario findUser(@WebParam(name = "nomUsuario") String nomUsuario) {
+    public Usuario findUser(@WebParam(name = "nombreUsuario") String nomUsuario) {
         //TODO write your implementation code here:
         Usuario u = usuarioFacade.findByNombreUsuario(nomUsuario);
         return u;
@@ -80,7 +71,7 @@ public class ServiceRegistroAutenticacion {
      * @return
      */
     @WebMethod(operationName = "comprobarLogin")
-    public boolean comprobarLogin(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "password") String password) {
+    public boolean comprobarLogin(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "passwordUsuario") String password) {
         //TODO write your implementation code here:
 //        Usuario u1;
         System.out.println("nombre ws" + nombreUsuario);

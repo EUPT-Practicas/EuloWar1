@@ -22,7 +22,7 @@ import utilidades.GestorEmail;
 @WebService(serviceName = "GestionPerfilUsuario")
 @Stateless()
 public class GestionPerfilUsuario {
-    
+
     @EJB
     private UsuarioFacade usuarioFacade;
     
@@ -50,7 +50,7 @@ public class GestionPerfilUsuario {
      * Web service operation
      */
     @WebMethod(operationName = "cambiarPassword")
-    public Boolean cambiarPassword(@WebParam(name = "email") String email, 
+    public Boolean cambiarPassword(@WebParam(name = "emailUsuario") String email, 
             @WebParam(name = "viejaPassword") String viejaPassword, 
             @WebParam(name = "nuevaPassword") String nuevaPassword, 
             @WebParam(name = "repiteNuevaPassword") String repiteNuevaPassword) {
@@ -90,7 +90,7 @@ public class GestionPerfilUsuario {
      * Web service operation
      */
     @WebMethod(operationName = "restablecerPassword")
-    public Boolean restablecerPassword(@WebParam(name = "email") String email) {
+    public Boolean restablecerPassword(@WebParam(name = "emailUsuario") String email) {
         //TODO write your implementation code here:
         Usuario u = (Usuario) usuarioFacade.findByEmail(email);
         if(u == null){
@@ -112,7 +112,7 @@ public class GestionPerfilUsuario {
      * Web service operation
      */
     @WebMethod(operationName = "eliminarCuenta")
-    public Boolean eliminarCuenta(@WebParam(name = "email") String email, 
+    public Boolean eliminarCuenta(@WebParam(name = "emailUsuario") String email, 
             @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         Usuario u = (Usuario) usuarioFacade.findByEmail(email);

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://webservices/" xmlns:tns="http://webservices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="comprobarLogin" type="tns:comprobarLogin"/>
+
+  <xs:element name="comprobarLoginResponse" type="tns:comprobarLoginResponse"/>
+
+  <xs:element name="crearUsuario" type="tns:crearUsuario"/>
+
+  <xs:element name="crearUsuarioResponse" type="tns:crearUsuarioResponse"/>
+
+  <xs:element name="findUser" type="tns:findUser"/>
+
+  <xs:element name="findUserResponse" type="tns:findUserResponse"/>
+
+  <xs:element name="usuario" type="tns:usuario"/>
+
+  <xs:complexType name="findUser">
+    <xs:sequence>
+      <xs:element name="nomUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaRegistro" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobarLogin">
+    <xs:sequence>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobarLoginResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="crearUsuario">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="crearUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

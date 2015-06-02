@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://webservices/" xmlns:tns="http://webservices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="asignarMina" type="tns:asignarMina"/>
+
+  <xs:element name="asignarMinaResponse" type="tns:asignarMinaResponse"/>
+
+  <xs:element name="asignarRecursos" type="tns:asignarRecursos"/>
+
+  <xs:element name="asignarRecursosResponse" type="tns:asignarRecursosResponse"/>
+
+  <xs:element name="cambiarPassword" type="tns:cambiarPassword"/>
+
+  <xs:element name="cambiarPasswordResponse" type="tns:cambiarPasswordResponse"/>
+
+  <xs:element name="comprobarLogin" type="tns:comprobarLogin"/>
+
+  <xs:element name="comprobarLoginResponse" type="tns:comprobarLoginResponse"/>
+
+  <xs:element name="crearUsuario" type="tns:crearUsuario"/>
+
+  <xs:element name="crearUsuarioResponse" type="tns:crearUsuarioResponse"/>
+
+  <xs:element name="eliminarCuenta" type="tns:eliminarCuenta"/>
+
+  <xs:element name="eliminarCuentaResponse" type="tns:eliminarCuentaResponse"/>
+
+  <xs:element name="findUser" type="tns:findUser"/>
+
+  <xs:element name="findUserResponse" type="tns:findUserResponse"/>
+
+  <xs:element name="hello" type="tns:hello"/>
+
+  <xs:element name="helloResponse" type="tns:helloResponse"/>
+
+  <xs:element name="mina" type="tns:mina"/>
+
+  <xs:element name="recurso" type="tns:recurso"/>
+
+  <xs:element name="restablecerPassword" type="tns:restablecerPassword"/>
+
+  <xs:element name="restablecerPasswordResponse" type="tns:restablecerPasswordResponse"/>
+
+  <xs:element name="usuario" type="tns:usuario"/>
+
+  <xs:complexType name="cambiarPassword">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="viejaPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="nuevaPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="repiteNuevaPassword" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cambiarPasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignarRecursos">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignarRecursosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="crearUsuario">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="passwordUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="crearUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobarLogin">
+    <xs:sequence>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="passwordUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobarLoginResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignarMina">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignarMinaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:mina" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mina">
+    <xs:sequence>
+      <xs:element name="deposito" type="xs:int"/>
+      <xs:element name="FKMinaRecurso" type="tns:recurso" minOccurs="0"/>
+      <xs:element name="FKMinaUsuario" type="tns:usuario" minOccurs="0"/>
+      <xs:element name="idMina" type="xs:int" minOccurs="0"/>
+      <xs:element name="nivelMina" type="xs:int"/>
+      <xs:element name="tipoMina" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recurso">
+    <xs:sequence>
+      <xs:element name="FKUsuario" type="tns:usuario" minOccurs="0"/>
+      <xs:element name="idRecurso" type="xs:int" minOccurs="0"/>
+      <xs:element name="tipoRecurso" type="xs:string" minOccurs="0"/>
+      <xs:element name="unidades" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaRegistro" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarCuenta">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarCuentaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="restablecerPassword">
+    <xs:sequence>
+      <xs:element name="emailUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="restablecerPasswordResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUser">
+    <xs:sequence>
+      <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

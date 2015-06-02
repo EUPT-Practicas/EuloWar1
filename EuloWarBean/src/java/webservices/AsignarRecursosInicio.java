@@ -19,7 +19,7 @@ import session.UsuarioFacade;
 
 /**
  *
- * @author FranciscoJavier
+ * @author Sergio
  */
 @WebService(serviceName = "AsignarRecursosInicio")
 @Stateless()
@@ -50,7 +50,7 @@ public class AsignarRecursosInicio {
      * Web service operation
      */
     @WebMethod(operationName = "asignarRecursos")
-    public boolean asignarRecursos(@WebParam(name = "email") String email) {
+    public boolean asignarRecursos(@WebParam(name = "emailUsuario") String email) {
         //TODO write your implementation code here:
         Usuario u = usuarioFacade.findByEmail(email);
         Recurso r = new Recurso("HIERRO", 1000);
@@ -58,6 +58,4 @@ public class AsignarRecursosInicio {
         recursoFacade.create(r);
         return true;
     }
-    
-    
 }
