@@ -32,20 +32,7 @@ public class AsignarRecursosInicio {
     @EJB
     private RecursoFacade recursoFacade;
 
-    /**
-     * Web service operation
-     * @return 
-     */
-    @WebMethod(operationName = "asignarMina")
-    public Mina asignarMina(@WebParam(name = "emailUsuario") String emailUsuario) {
-        //TODO write your implementation code here:
-        Usuario u = usuarioFacade.findByEmail(emailUsuario);
-        Mina m = new Mina ("HIERRO", 1);
-        m.setFKMinaUsuario(u);
-        minaFacade.create(m);
-        return m;
-    }
-
+    
     /**
      * Web service operation
      */
