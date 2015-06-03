@@ -130,4 +130,18 @@ public class OperacionesMinas {
         //System.out.println("Nivel mina: " + nm.getNivel() + " , " + nm.getGanancia());
         return nm;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getMina")
+    public Mina getMina(@WebParam(name = "idMina") int idMina) {
+        List<Mina> listaMinas = minaFacade.findAll();
+        for(Mina m : listaMinas){
+            if(m.getIdMina().equals(idMina)){
+                return m;
+            }
+        }
+        return null;
+    }
 }

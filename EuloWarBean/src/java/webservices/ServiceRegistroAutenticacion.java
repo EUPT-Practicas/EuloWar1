@@ -83,4 +83,16 @@ public class ServiceRegistroAutenticacion {
         }
         return false;
     }
+    
+    /**
+     * Web service operation
+     * @param email
+     * @return 
+     */
+    @WebMethod(operationName = "existeUsuario")
+    public boolean existeUsuario(@WebParam(name = "email") String email) {
+        //TODO write your implementation code here:
+        
+        return usuarioFacade.findByEmail(email) != null;
+    }
 }
