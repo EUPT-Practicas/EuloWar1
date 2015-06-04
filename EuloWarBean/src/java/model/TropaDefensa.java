@@ -74,6 +74,11 @@ public class TropaDefensa implements Serializable {
         this.tipoTropaDefensa = tipoTropaDefensa;
         this.unidades = unidades;
     }
+    
+    public TropaDefensa(String tipoTropaDefensa, int unidades){
+        this.tipoTropaDefensa = tipoTropaDefensa;
+        this.unidades = unidades;
+    }
 
     public Integer getIdTropaDefensa() {
         return idTropaDefensa;

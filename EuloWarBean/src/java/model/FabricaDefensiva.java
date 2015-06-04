@@ -53,6 +53,10 @@ public class FabricaDefensiva implements Serializable {
 
     public FabricaDefensiva() {
     }
+    
+    public FabricaDefensiva(int nivelFabricaDefensiva){
+        this.nivelFabricaDefensiva = nivelFabricaDefensiva;
+    }
 
     public FabricaDefensiva(Integer idFabricaDefensiva) {
         this.idFabricaDefensiva = idFabricaDefensiva;

@@ -5,9 +5,12 @@
  */
 package session;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.NivelTropasOfensivas;
 
 /**
@@ -26,6 +29,18 @@ public class NivelTropasOfensivasFacade extends AbstractFacade<NivelTropasOfensi
 
     public NivelTropasOfensivasFacade() {
         super(NivelTropasOfensivas.class);
+    }
+    
+    public List<String> getNombresTropas() {
+        Query q = em.createNamedQuery("NivelTropasOfensivas.findAll");
+        List<String> tiposTropas = new ArrayList<>();
+        List<NivelTropasOfensivas> listOfensivas = q.getResultList();
+        for (NivelTropasOfensivas elementoOfensivo : listOfensivas) {
+            if (!tiposTropas.contains(elementoOfensivo.getTipoTropa())) {
+                tiposTropas.add(elementoOfensivo.getTipoTropa());
+            }
+        }
+        return tiposTropas;
     }
     
 }
