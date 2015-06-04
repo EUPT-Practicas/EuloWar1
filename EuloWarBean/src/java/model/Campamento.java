@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Campamento.findAll", query = "SELECT c FROM Campamento c"),
     @NamedQuery(name = "Campamento.findByIdCampamento", query = "SELECT c FROM Campamento c WHERE c.idCampamento = :idCampamento"),
-    @NamedQuery(name = "Campamento.findByTropasLibres", query = "SELECT c FROM Campamento c WHERE c.tropasLibres = :tropasLibres"),
+    @NamedQuery(name = "Campamento.findByTotal", query = "SELECT c FROM Campamento c WHERE c.total = :total"),
     @NamedQuery(name = "Campamento.findByTropasAlmacenadas", query = "SELECT c FROM Campamento c WHERE c.tropasAlmacenadas = :tropasAlmacenadas")})
 public class Campamento implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,8 +41,8 @@ public class Campamento implements Serializable {
     @Basic(optional = false)
     @Column(name = "idCampamento")
     private Integer idCampamento;
-    @Column(name = "tropasLibres")
-    private Integer tropasLibres;
+    @Column(name = "total")
+    private Integer total;
     @Column(name = "tropasAlmacenadas")
     private Integer tropasAlmacenadas;
     @OneToMany(mappedBy = "fKTropaAtaqueCampamento")
@@ -68,12 +68,12 @@ public class Campamento implements Serializable {
         this.idCampamento = idCampamento;
     }
 
-    public Integer getTropasLibres() {
-        return tropasLibres;
+    public Integer getTotal() {
+        return total;
     }
 
-    public void setTropasLibres(Integer tropasLibres) {
-        this.tropasLibres = tropasLibres;
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     public Integer getTropasAlmacenadas() {

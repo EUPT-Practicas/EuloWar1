@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TropaAtaque.findAll", query = "SELECT t FROM TropaAtaque t"),
     @NamedQuery(name = "TropaAtaque.findByIdTropaAtaque", query = "SELECT t FROM TropaAtaque t WHERE t.idTropaAtaque = :idTropaAtaque"),
     @NamedQuery(name = "TropaAtaque.findByTipoTropaAtaque", query = "SELECT t FROM TropaAtaque t WHERE t.tipoTropaAtaque = :tipoTropaAtaque"),
-    @NamedQuery(name = "TropaAtaque.findByNivelTropaAtaque", query = "SELECT t FROM TropaAtaque t WHERE t.nivelTropaAtaque = :nivelTropaAtaque")})
+    @NamedQuery(name = "TropaAtaque.findByNivelTropaAtaque", query = "SELECT t FROM TropaAtaque t WHERE t.nivelTropaAtaque = :nivelTropaAtaque"),
+    @NamedQuery(name = "TropaAtaque.findByUnidades", query = "SELECT t FROM TropaAtaque t WHERE t.unidades = :unidades")})
 public class TropaAtaque implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,6 +48,10 @@ public class TropaAtaque implements Serializable {
     private String tipoTropaAtaque;
     @Column(name = "nivelTropa_Ataque")
     private Integer nivelTropaAtaque;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "unidades")
+    private int unidades;
     @JoinColumn(name = "FK_Tropa_AtaqueUsuario", referencedColumnName = "email")
     @ManyToOne(optional = false)
     private Usuario fKTropaAtaqueUsuario;
@@ -64,9 +69,10 @@ public class TropaAtaque implements Serializable {
         this.idTropaAtaque = idTropaAtaque;
     }
 
-    public TropaAtaque(Integer idTropaAtaque, String tipoTropaAtaque) {
+    public TropaAtaque(Integer idTropaAtaque, String tipoTropaAtaque, int unidades) {
         this.idTropaAtaque = idTropaAtaque;
         this.tipoTropaAtaque = tipoTropaAtaque;
+        this.unidades = unidades;
     }
 
     public Integer getIdTropaAtaque() {
@@ -91,6 +97,14 @@ public class TropaAtaque implements Serializable {
 
     public void setNivelTropaAtaque(Integer nivelTropaAtaque) {
         this.nivelTropaAtaque = nivelTropaAtaque;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
     }
 
     public Usuario getFKTropaAtaqueUsuario() {
