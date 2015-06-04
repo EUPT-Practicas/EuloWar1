@@ -19,7 +19,6 @@ import model.Mina;
  */
 @Stateless
 public class MinaFacade extends AbstractFacade<Mina> {
-
     @PersistenceContext(unitName = "EuloWarBeanPU")
     private EntityManager em;
 
@@ -31,7 +30,7 @@ public class MinaFacade extends AbstractFacade<Mina> {
     public MinaFacade() {
         super(Mina.class);
     }
-
+    
     public List obtenerMinasFromEmail(String email) {
         Query q = em.createNamedQuery("Mina.findAll");
 
@@ -47,19 +46,5 @@ public class MinaFacade extends AbstractFacade<Mina> {
         }
         return listaMinas;
     }
-
-    /*
-     public Recurso obtenerRecursosFromEmail(String email){
-     Query q = em.createNamedQuery("Recurso.findAll");
-     //q.setParameter("email", email);
-     List<Recurso> listaRecursos = q.getResultList();
-     for (Recurso r : listaRecursos){
-     System.out.println("USUARIORECURSOS: " + r.getFKUsuario().getEmail());
-     if (r.getFKUsuario().getEmail().equals(email)){
-     return r;
-     }
-     }
-     return null;
-     }  
-     */
+    
 }

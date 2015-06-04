@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TropaDefensa.findAll", query = "SELECT t FROM TropaDefensa t"),
     @NamedQuery(name = "TropaDefensa.findByIdTropaDefensa", query = "SELECT t FROM TropaDefensa t WHERE t.idTropaDefensa = :idTropaDefensa"),
     @NamedQuery(name = "TropaDefensa.findByTipoTropaDefensa", query = "SELECT t FROM TropaDefensa t WHERE t.tipoTropaDefensa = :tipoTropaDefensa"),
-    @NamedQuery(name = "TropaDefensa.findByNivelTropaDefensa", query = "SELECT t FROM TropaDefensa t WHERE t.nivelTropaDefensa = :nivelTropaDefensa")})
+    @NamedQuery(name = "TropaDefensa.findByNivelTropaDefensa", query = "SELECT t FROM TropaDefensa t WHERE t.nivelTropaDefensa = :nivelTropaDefensa"),
+    @NamedQuery(name = "TropaDefensa.findByUnidades", query = "SELECT t FROM TropaDefensa t WHERE t.unidades = :unidades")})
 public class TropaDefensa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,6 +48,10 @@ public class TropaDefensa implements Serializable {
     private String tipoTropaDefensa;
     @Column(name = "nivelTropa_Defensa")
     private Integer nivelTropaDefensa;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "unidades")
+    private int unidades;
     @JoinColumn(name = "FK_Tropa_DefensaUsuario", referencedColumnName = "email")
     @ManyToOne(optional = false)
     private Usuario fKTropaDefensaUsuario;
@@ -64,9 +69,10 @@ public class TropaDefensa implements Serializable {
         this.idTropaDefensa = idTropaDefensa;
     }
 
-    public TropaDefensa(Integer idTropaDefensa, String tipoTropaDefensa) {
+    public TropaDefensa(Integer idTropaDefensa, String tipoTropaDefensa, int unidades) {
         this.idTropaDefensa = idTropaDefensa;
         this.tipoTropaDefensa = tipoTropaDefensa;
+        this.unidades = unidades;
     }
 
     public Integer getIdTropaDefensa() {
@@ -91,6 +97,14 @@ public class TropaDefensa implements Serializable {
 
     public void setNivelTropaDefensa(Integer nivelTropaDefensa) {
         this.nivelTropaDefensa = nivelTropaDefensa;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
     }
 
     public Usuario getFKTropaDefensaUsuario() {
