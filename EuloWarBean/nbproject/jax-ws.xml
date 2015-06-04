@@ -16,6 +16,9 @@
     <service name="OperacionesRecursos">
       <implementation-class>webservices.OperacionesRecursos</implementation-class>
     </service>
+    <service name="OperacionesCampamento">
+      <implementation-class>webservices.OperacionesCampamento</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
