@@ -5,9 +5,11 @@
  */
 package session;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.TropaDefensa;
 
 /**
@@ -26,6 +28,18 @@ public class TropaDefensaFacade extends AbstractFacade<TropaDefensa> {
 
     public TropaDefensaFacade() {
         super(TropaDefensa.class);
+    }
+    
+    public TropaDefensa obtenerTropasFromEmailAndTipo(String email, String tipo){
+        Query q = em.createNamedQuery("TropaDefensa.findByTipoTropaDefensa");
+        q.setParameter("tipoTropaDefensa", tipo);
+        List<TropaDefensa> listaTropas = q.getResultList();
+        for (TropaDefensa tropa : listaTropas){
+            if (tropa.getFKTropaDefensaUsuario().getEmail().equals(email)){
+                return tropa;
+            }
+        }
+        return null;
     }
     
 }

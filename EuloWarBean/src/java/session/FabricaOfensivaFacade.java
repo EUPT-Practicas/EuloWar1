@@ -5,9 +5,11 @@
  */
 package session;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.FabricaOfensiva;
 
 /**
@@ -26,6 +28,17 @@ public class FabricaOfensivaFacade extends AbstractFacade<FabricaOfensiva> {
 
     public FabricaOfensivaFacade() {
         super(FabricaOfensiva.class);
+    }
+    
+    public FabricaOfensiva obtenerFabricaFromEmail (String email){
+        Query q = em.createNamedQuery("FabricaOfensiva.findAll");
+        List<FabricaOfensiva> listaFabricas = q.getResultList();
+        for (FabricaOfensiva fabrica : listaFabricas){
+            if (fabrica.getFKFabricaOfensivaUsuario().getEmail().equals(email)){
+                return fabrica;
+            }
+        }
+        return null;
     }
     
 }
