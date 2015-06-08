@@ -5,6 +5,7 @@
  */
 package webservices;
 
+import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -137,6 +138,43 @@ public class OperacionesTropas {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getTropaAtaque")
+    public TropaAtaque getTropaAtaque(@WebParam(name = "emailUsuario") String emailUsuario, @WebParam(name = "tipoTropa") String tipoTropa) {
+        //TODO write your implementation code here
+        
+        return tropaAtaqueFacade.obtenerTropasFromEmailAndTipo(emailUsuario, tipoTropa);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getTropaDefensa")
+    public TropaDefensa getTropaDefensa(@WebParam(name = "emailUsuario") String emailUsuario, @WebParam(name = "tipoTropa") String tipoTropa) {
+        //TODO write your implementation code here:
+        return tropaDefensaFacade.obtenerTropasFromEmailAndTipo(emailUsuario, tipoTropa);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getNivelFabricaAtaque")
+    public Integer getNivelFabricaAtaque(@WebParam(name = "emailUsuario") String emailUsuario) {
+        //TODO write your implementation code here:
+        return fabricaOfensivaFacade.obtenerFabricaFromEmail(emailUsuario).getNivelFabricaOfensiva();
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getNivelFabricaDefensa")
+    public Integer getNivelFabricaDefensa(@WebParam(name = "emailUsuario") String emailUsuario) {
+        //TODO write your implementation code here:
+        return fabricaDefensivaFacade.obtenerFabricaFromEmail(emailUsuario).getNivelFabricaDefensiva();
     }
     
     
