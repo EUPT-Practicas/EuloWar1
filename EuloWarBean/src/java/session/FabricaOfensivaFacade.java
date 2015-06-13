@@ -34,10 +34,13 @@ public class FabricaOfensivaFacade extends AbstractFacade<FabricaOfensiva> {
         Query q = em.createNamedQuery("FabricaOfensiva.findAll");
         List<FabricaOfensiva> listaFabricas = q.getResultList();
         for (FabricaOfensiva fabrica : listaFabricas){
+            System.out.println("FABRICAENMETODO JARL DEEEE: " + fabrica.getFKFabricaOfensivaUsuario());
             if (fabrica.getFKFabricaOfensivaUsuario().getEmail().equals(email)){
+                System.out.println("no entro porque soy un hijo de puta");
                 return fabrica;
             }
         }
+        System.out.println("paro de buscar ya que me canso");
         return null;
     }
     

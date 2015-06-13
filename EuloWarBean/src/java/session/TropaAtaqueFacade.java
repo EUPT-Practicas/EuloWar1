@@ -5,6 +5,7 @@
  */
 package session;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -40,6 +41,18 @@ public class TropaAtaqueFacade extends AbstractFacade<TropaAtaque> {
             }
         }
         return null;
+    }
+    
+    public List<TropaAtaque> obtenerTropasFromEmail(String email){
+        Query q = em.createNamedQuery("TropaAtaque.findAll");
+        List<TropaAtaque> listaTropas = q.getResultList();
+        List<TropaAtaque> listaFinal = new ArrayList<>();
+        for (TropaAtaque tropa : listaTropas){
+            if (tropa.getFKTropaAtaqueUsuario().getEmail().equals(email)){
+                listaFinal.add(tropa);
+            }
+        }
+        return listaFinal;
     }
     
 }
