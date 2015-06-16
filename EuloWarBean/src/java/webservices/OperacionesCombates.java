@@ -50,7 +50,6 @@ public class OperacionesCombates {
     private NivelTropasDefensivasFacade nivelTropasDefensivasFacade;
     
     private Random random = new Random();
-    private String[] ArrayTiposTropasAtacantes = {"PEPE","JUAN"};
     
     private final String A_TANQUE = "TANQUE";
     private final int FUERZA_A_TANQUE = 20;

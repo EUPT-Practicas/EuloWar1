@@ -107,7 +107,23 @@ public class OperacionesTropas {
         tropaDefensaFacade.edit(tropaDefensa);
         return true;
     }
-
+    
+    /**
+     * Web service operation
+     * @param emailUsuario
+     * @return 
+     */
+    @WebMethod(operationName = "eliminarTropasOfensivas")
+    public boolean eliminarTropasOfensivas(@WebParam(name = "emailUsuario") String emailUsuario) {
+        //TODO write your implementation code here:
+        List<TropaAtaque> listaTropasAtaque = tropaAtaqueFacade.obtenerTropasFromEmail(emailUsuario);
+        for (TropaAtaque tropa : listaTropasAtaque){
+            tropa.setUnidades(0);
+            tropaAtaqueFacade.edit(tropa);
+        }
+        return true;
+    }
+    
     /**
      * Web service operation
      */
@@ -176,6 +192,7 @@ public class OperacionesTropas {
         //TODO write your implementation code here:
         return fabricaDefensivaFacade.obtenerFabricaFromEmail(emailUsuario).getNivelFabricaDefensiva();
     }
+
     
     
 }
