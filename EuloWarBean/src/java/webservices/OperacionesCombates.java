@@ -104,15 +104,24 @@ public class OperacionesCombates {
         }
         if (listaFabricasMismoNivel.isEmpty()){
             //ELEGIR UN RIVAL CUALQUIERA.
-            int aleatorio = random.nextInt(listaFabricasRivales.size()+1);
+            int aleatorio = random.nextInt(listaFabricasRivales.size());
             fabricaRival = listaFabricasRivales.get(aleatorio);
+            if (!fabricaRival.getFKFabricaDefensivaUsuario().getEmail().equals(email)){
+                System.out.println("RIVALISIMO ES: "+ fabricaRival.getFKFabricaDefensivaUsuario().getEmail());
+                return fabricaRival.getFKFabricaDefensivaUsuario();
+                
+            }
         } else {
             //ELEGIR UN RIVAL CUALQUIERA DE ESA LISTA.
             int aleatorioNivel = random.nextInt(listaFabricasMismoNivel.size());
             fabricaRival = listaFabricasMismoNivel.get(aleatorioNivel);
+            if (!fabricaRival.getFKFabricaDefensivaUsuario().getEmail().equals(email)){
+                System.out.println("RIVALISIMO ES: "+ fabricaRival.getFKFabricaDefensivaUsuario().getEmail());
+                return fabricaRival.getFKFabricaDefensivaUsuario();
+            }
         }
-        System.out.println("RIVALISIMO ES: "+ fabricaRival.getFKFabricaDefensivaUsuario().getEmail());
-        return fabricaRival.getFKFabricaDefensivaUsuario();
+        return null;
+        
 
     }
 
