@@ -134,6 +134,19 @@ public class OperacionesCampamento {
         
         return "ERROR";
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reiniciarCampamentos")
+    public boolean reiniciarCampamentos(@WebParam(name = "emailUsuario") String emailUsuario) {
+        //TODO write your implementation code here:
+        List<Campamento> listaCampamentos = campamentoFacade.obtenerCampamentosFromEmail(emailUsuario);
+        for (Campamento campamento : listaCampamentos){
+            campamento.setTropasAlmacenadas(0);
+        }
+        return true;
+    }
     
     
     
