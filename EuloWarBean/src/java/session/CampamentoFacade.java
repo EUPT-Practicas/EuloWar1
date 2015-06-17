@@ -30,7 +30,9 @@ public class CampamentoFacade extends AbstractFacade<Campamento> {
     public CampamentoFacade() {
         super(Campamento.class);
     }
-     public List obtenerMinasFromEmail(String emailUsuario) {
+    
+    
+    public List<Campamento> obtenerCampamentosFromEmail(String emailUsuario) {
         Query q = em.createNamedQuery("Campamento.findAll");
 
         List<Campamento> campamentos = q.getResultList();
@@ -40,7 +42,7 @@ public class CampamentoFacade extends AbstractFacade<Campamento> {
             System.out.println("Lista restante: " + listaCampamentos.size());
             
             if (c.getFKCampamentoUsuario().getEmail().equals(emailUsuario)){
-                System.out.println("Añade mina: " + c.getIdCampamento());
+                System.out.println("Añade campamento: " + c.getIdCampamento());
                 listaCampamentos.add(c);
             }
         }
