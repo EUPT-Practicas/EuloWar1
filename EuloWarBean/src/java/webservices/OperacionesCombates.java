@@ -136,22 +136,22 @@ public class OperacionesCombates {
             //MULTIPLICAR FUERZA * UNIDADES * NIVEL
             switch (tropaAtacante.getTipoTropaAtaque()){
                 case A_AVION_COMBATE:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_AVION_COMBATE;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_AVION_COMBATE;
                     break;
                 case A_CHUCK_NORRIS:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_CHUNK_NORRIS;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_CHUNK_NORRIS;
                     break;
                 case A_HELICOPTERO:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_HELICOPTERO;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_HELICOPTERO;
                     break;
                 case A_PELOTON:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_PELOTON;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_PELOTON;
                     break;
                 case A_TANQUE:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_TANQUE;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_TANQUE;
                     break;
                 case A_VEHICULO_BLINDADO:
-                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*tropaAtacante.getNivelTropaAtaque()*FUERZA_A_VEHICULO_BLINDADO;
+                    fuerzaAtaqueRival += tropaAtacante.getUnidades()*FUERZA_A_VEHICULO_BLINDADO;
                     break;
                 default:
                     break;
@@ -160,22 +160,22 @@ public class OperacionesCombates {
         for (TropaDefensa tropaDefensora : tropasDefensivas){
             switch (tropaDefensora.getTipoTropaDefensa()){
                 case D_CAMPO_MINAS:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_CAMPO_MINAS;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_CAMPO_MINAS;
                     break;
                 case D_CANYON_ANTIAEREO:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_CANYON_ANTIAEREO;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_CANYON_ANTIAEREO;
                     break;
                 case D_CANYON_COMBATE:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_CANYON_COMBATE;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_CANYON_COMBATE;
                     break;
                 case D_MISIL_ANTIAEREO:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_MISIL_ANTIAEREO;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_MISIL_ANTIAEREO;
                     break;
                 case D_RAMBO:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_RAMBO;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_RAMBO;
                     break;
                 case D_TRINCHERA_AMETRALLADORAS:
-                    fuerzaDefensaRival += tropaDefensora.getUnidades()*tropaDefensora.getNivelTropaDefensa()*FUERZA_D_TRINCHERA_AMETRALLADORAS;
+                    fuerzaDefensaRival += tropaDefensora.getUnidades()*FUERZA_D_TRINCHERA_AMETRALLADORAS;
                     break;
                 default:
                     break;

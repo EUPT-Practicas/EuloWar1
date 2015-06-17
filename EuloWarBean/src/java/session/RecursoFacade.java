@@ -35,7 +35,6 @@ public class RecursoFacade extends AbstractFacade<Recurso> {
         //q.setParameter("email", email);
         List<Recurso> listaRecursos = q.getResultList();
         for (Recurso r : listaRecursos){
-            System.out.println("USUARIORECURSOS: " + r.getFKUsuario().getEmail());
             if (r.getFKUsuario().getEmail().equals(email)){
                 return r;
             }
